@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="${suiteName}" parallel="methods" thread-count="1" configfailurepolicy="continue">
+
+	<test name="apiTest">
+		<classes>
+			<class name="${className}">
+			</class>
+		</classes>
+	</test>
+	<listeners>
+		<listener class-name="com.morningstar.automation.base.core.listener.ReporterListener"></listener>
+	</listeners>
+</suite>
+

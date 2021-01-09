@@ -1,0 +1,8 @@
+#parse (“macro.vm”)
+
+@Action(“${classNameLowCase}Action”)
+public class ${classNameUpCase}Action extends BaseAction{
+    @Autowired
+    public ${classNameUpCase}Dao ${classNameLowCase}Dao;
+    private List<${classNameUpCase}&gt; ${classNameLowCase}s;
+    private ${classNameUpCase} ${classNameLowCase};

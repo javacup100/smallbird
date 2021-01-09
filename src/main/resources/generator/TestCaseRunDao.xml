@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morningstar.qa.platform.workflow.mapper.TestCaseRunDao">
+  <resultMap id="BaseResultMap" type="com.morningstar.qa.platform.workflow.entity.testcases.TestCaseRun">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="caseId" jdbcType="INTEGER" property="caseid" />
+    <result column="taskid" jdbcType="VARCHAR" property="taskid" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="responseData" jdbcType="VARCHAR" property="responsedata" />
+    <result column="extractFields" jdbcType="VARCHAR" property="extractfields" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, caseId, taskid, `status`, responseData, extractFields, create_by, create_time,
+    update_by, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from testcaserun
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from testcaserun
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCaseRun" useGeneratedKeys="true">
+    insert into testcaserun (caseId, taskid, `status`,
+      responseData, extractFields, create_by,
+      create_time, update_by, update_time
+      )
+    values (#{caseid,jdbcType=INTEGER}, #{taskid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+      #{responsedata,jdbcType=VARCHAR}, #{extractfields,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCaseRun" useGeneratedKeys="true">
+    insert into testcaserun
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="caseid != null">
+        caseId,
+      </if>
+      <if test="taskid != null">
+        taskid,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="responsedata != null">
+        responseData,
+      </if>
+      <if test="extractfields != null">
+        extractFields,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="caseid != null">
+        #{caseid,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null">
+        #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="responsedata != null">
+        #{responsedata,jdbcType=VARCHAR},
+      </if>
+      <if test="extractfields != null">
+        #{extractfields,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCaseRun">
+    update testcaserun
+    <set>
+      <if test="caseid != null">
+        caseId = #{caseid,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null">
+        taskid = #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="responsedata != null">
+        responseData = #{responsedata,jdbcType=VARCHAR},
+      </if>
+      <if test="extractfields != null">
+        extractFields = #{extractfields,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCaseRun">
+    update testcaserun
+    set caseId = #{caseid,jdbcType=INTEGER},
+      taskid = #{taskid,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      responseData = #{responsedata,jdbcType=VARCHAR},
+      extractFields = #{extractfields,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

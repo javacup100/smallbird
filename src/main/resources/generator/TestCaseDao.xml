@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.morningstar.qa.platform.workflow.mapper.TestCaseDao">
+  <resultMap id="BaseResultMap" type="com.morningstar.qa.platform.workflow.entity.testcases.TestCase">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="priority" jdbcType="VARCHAR" property="priority" />
+    <result column="projectId" jdbcType="INTEGER" property="projectid" />
+    <result column="group" jdbcType="VARCHAR" property="group" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="api" jdbcType="VARCHAR" property="api" />
+    <result column="requestParam" jdbcType="VARCHAR" property="requestparam" />
+    <result column="requestData" jdbcType="VARCHAR" property="requestdata" />
+    <result column="condition" jdbcType="VARCHAR" property="condition" />
+    <result column="extractFields" jdbcType="VARCHAR" property="extractfields" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, priority, projectId, `group`, `name`, api, requestParam, requestData, `condition`,
+    extractFields
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from testcase
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from testcase
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase" useGeneratedKeys="true">
+    insert into testcase (priority, projectId, `group`,
+      `name`, api, requestParam,
+      requestData, `condition`, extractFields
+      )
+    values (#{priority,jdbcType=VARCHAR}, #{projectid,jdbcType=INTEGER}, #{group,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{api,jdbcType=VARCHAR}, #{requestparam,jdbcType=VARCHAR},
+      #{requestdata,jdbcType=VARCHAR}, #{condition,jdbcType=VARCHAR}, #{extractfields,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase" useGeneratedKeys="true">
+    insert into testcase
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="projectid != null">
+        projectId,
+      </if>
+      <if test="group != null">
+        `group`,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="api != null">
+        api,
+      </if>
+      <if test="requestparam != null">
+        requestParam,
+      </if>
+      <if test="requestdata != null">
+        requestData,
+      </if>
+      <if test="condition != null">
+        `condition`,
+      </if>
+      <if test="extractfields != null">
+        extractFields,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="priority != null">
+        #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        #{projectid,jdbcType=INTEGER},
+      </if>
+      <if test="group != null">
+        #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="api != null">
+        #{api,jdbcType=VARCHAR},
+      </if>
+      <if test="requestparam != null">
+        #{requestparam,jdbcType=VARCHAR},
+      </if>
+      <if test="requestdata != null">
+        #{requestdata,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null">
+        #{condition,jdbcType=VARCHAR},
+      </if>
+      <if test="extractfields != null">
+        #{extractfields,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase">
+    update testcase
+    <set>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null">
+        projectId = #{projectid,jdbcType=INTEGER},
+      </if>
+      <if test="group != null">
+        `group` = #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="api != null">
+        api = #{api,jdbcType=VARCHAR},
+      </if>
+      <if test="requestparam != null">
+        requestParam = #{requestparam,jdbcType=VARCHAR},
+      </if>
+      <if test="requestdata != null">
+        requestData = #{requestdata,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null">
+        `condition` = #{condition,jdbcType=VARCHAR},
+      </if>
+      <if test="extractfields != null">
+        extractFields = #{extractfields,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase">
+    update testcase
+    set priority = #{priority,jdbcType=VARCHAR},
+      projectId = #{projectid,jdbcType=INTEGER},
+      `group` = #{group,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      api = #{api,jdbcType=VARCHAR},
+      requestParam = #{requestparam,jdbcType=VARCHAR},
+      requestData = #{requestdata,jdbcType=VARCHAR},
+      `condition` = #{condition,jdbcType=VARCHAR},
+      extractFields = #{extractfields,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
