@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.morningstar.qa.platform.workflow.mapper.TestCaseDao">
-  <resultMap id="BaseResultMap" type="com.morningstar.qa.platform.workflow.entity.testcases.TestCase">
+<mapper namespace="com.smallbird.backend.platform.workflow.mapper.TestCaseDao">
+  <resultMap id="BaseResultMap" type="com.smallbird.backend.platform.workflow.entity.testcases.TestCase">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="priority" jdbcType="VARCHAR" property="priority" />
     <result column="projectId" jdbcType="INTEGER" property="projectid" />
@@ -27,7 +27,7 @@
     delete from testcase
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.smallbird.backend.platform.workflow.entity.testcases.TestCase" useGeneratedKeys="true">
     insert into testcase (priority, projectId, `group`,
       `name`, api, requestParam,
       requestData, `condition`, extractFields
@@ -37,7 +37,7 @@
       #{requestdata,jdbcType=VARCHAR}, #{condition,jdbcType=VARCHAR}, #{extractfields,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.smallbird.backend.platform.workflow.entity.testcases.TestCase" useGeneratedKeys="true">
     insert into testcase
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="priority != null">
@@ -98,7 +98,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase">
+  <update id="updateByPrimaryKeySelective" parameterType="com.smallbird.backend.platform.workflow.entity.testcases.TestCase">
     update testcase
     <set>
       <if test="priority != null">
@@ -131,7 +131,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.morningstar.qa.platform.workflow.entity.testcases.TestCase">
+  <update id="updateByPrimaryKey" parameterType="com.smallbird.backend.platform.workflow.entity.testcases.TestCase">
     update testcase
     set priority = #{priority,jdbcType=VARCHAR},
       projectId = #{projectid,jdbcType=INTEGER},

@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
     compile 'mysql:mysql-connector-java'
     compileOnly 'org.projectlombok:lombok'
+    compile 'javax.validation:validation-api'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     compile 'org.apache.velocity:velocity:1.7'
     compile group: 'org.testng', name: 'testng', version: '7.3.0'

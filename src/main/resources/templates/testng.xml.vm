@@ -8,7 +8,7 @@
 		</classes>
 	</test>
 	<listeners>
-		<listener class-name="com.morningstar.automation.base.core.listener.ReporterListener"></listener>
+		<listener class-name="com.smallbird.automation.base.core.listener.ReporterListener"></listener>
 	</listeners>
 </suite>
 

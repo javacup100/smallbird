@@ -7,7 +7,7 @@
         <methods>
           <include name="contextLoads"/>
         </methods>
-      </class> <!-- com.morningstar.qa.platform.SmallBirdApplicationTests -->
+      </class> <!-- com.smallbird.backend.platform.SmallBirdApplicationTests -->
     </classes>
   </test> <!-- Command line test(failed) -->
 </suite> <!-- Failed suite [Command line suite] -->

@@ -4,15 +4,18 @@ project:
 
 spring:
   application:
-    name: HikariCP测试
-  # 数据源的配置
+    name: HikariCP
+
   datasource:
-    # 连接池的配置
     type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/foodie-dev?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    username: root
+    password: 123456
     hikari:
       minimum-idle: 5
       maximum-pool-size: 15
       connection-test-query: SELECT 1
       max-lifetime: 1800000
       connection-timeout: 30000
-      pool-name: DatebookHikariCP
+      pool-name: HikariCPPool
